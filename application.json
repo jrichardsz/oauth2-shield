@@ -1,0 +1,4 @@
+{
+  "tokenSecret":"${token_secret}",
+  "tokenLife":"${token_life}"
+}

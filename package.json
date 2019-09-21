@@ -1,0 +1,20 @@
+{
+  "name": "oauth-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "supervisor -e 'js'  index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dependency-injection-4nodejs": "jrichardsz/dependency-injection-4nodejs#master",
+    "express": "4.17.1",
+    "jsonwebtoken": "8.5.1",
+    "rand-token": "0.4.0",
+    "supervisor": "0.12.0",
+    "uuid": "3.3.3"
+  }
+}
