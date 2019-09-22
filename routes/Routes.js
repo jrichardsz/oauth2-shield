@@ -20,11 +20,36 @@ function Routes() {
     });
 
     _this.express.post('/oauth2/credentials', function(req, res) {
-      res.json(_this.credentialService.generateSecrets());
+
+      _this.credentialService.generateSecretsAsync(req.body, function(err, credentials){
+        if(err){
+          console.log(err.message || err);
+          res.status(400);
+          res.json({
+            "message":err.message || err
+          });
+          return;
+        }
+
+        res.json(credentials);
+      });
+
     });
 
     _this.express.post('/oauth2/token', function(req, res) {
-      res.json(_this.tokenService.generateTokenFromCredentials(req.body.client_id,req.body.client_secret));
+
+      _this.tokenService.generateTokenFromCredentialsAsync(req.body,function(err,tokenData){
+        if(err){
+          console.log(err.message || err);
+          res.status(400);
+          res.json({
+            "message":err.message || err
+          });
+          return;
+        }
+
+        res.json(tokenData);
+      });
     });
 
     _this.express.post('/oauth2/introspect', function(req, res) {

@@ -1,4 +1,9 @@
 {
   "tokenSecret":"${token_secret}",
-  "tokenLife":"${token_life}"
+  "tokenLife":"${token_life}",
+  "host":"${database_host}",
+  "user":"${database_user}",
+  "password":"${database_password}",
+  "port":"${database_port}",
+  "name":"${database_name}"
 }
