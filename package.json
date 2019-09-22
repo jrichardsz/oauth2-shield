@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "supervisor -e 'js'  index.js"
+    "dev": "supervisor -e 'js'  index.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
