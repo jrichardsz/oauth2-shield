@@ -62,6 +62,10 @@ And
 npm run start
 ```
 
+# Docker
+
+Check this [guideline](https://github.com/jrichardsz/oauth2-shield/wiki/Launch-with-Docker)
+
 # TO-DO
 
 - Unit Tests

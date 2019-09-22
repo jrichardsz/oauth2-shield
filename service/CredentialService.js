@@ -44,7 +44,7 @@ function CredentialService() {
 
         var credentials = _this.tokenHelper.generateSecrets();
 
-        var plainClientSecret = credentials.clientSecret;
+        var plainClientSecret = credentials.client_secret;
 
         bcrypt.hash(plainClientSecret, saltRoundsGenerationNumber, function(errCrypt, hash) {
 
@@ -54,7 +54,7 @@ function CredentialService() {
           }
 
           var entity = parameters;
-          entity.client_id = credentials.clientId;
+          entity.client_id = credentials.client_id;
           entity.client_secret = hash;
 
           _this.credentialsRepository.save(entity, function(errInsert, result){
