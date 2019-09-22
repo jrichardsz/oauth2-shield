@@ -13,10 +13,11 @@
     "bcrypt": "^3.0.6",
     "dependency-injection-4nodejs": "jrichardsz/dependency-injection-4nodejs#master",
     "express": "4.17.1",
+    "http-auth": "^3.2.3",
     "jsonwebtoken": "8.5.1",
     "lodash.isplainobject": "4.0.6",
     "lodash.isstring": "4.0.1",
-    "mysql": "2.12.0",
+    "mysql": "2.14.0",
     "rand-token": "0.4.0",
     "supervisor": "0.12.0",
     "uuid": "3.3.3"

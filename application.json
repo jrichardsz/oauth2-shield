@@ -5,5 +5,8 @@
   "user":"${database_user}",
   "password":"${database_password}",
   "port":"${database_port}",
-  "name":"${database_name}"
+  "name":"${database_name}",
+  "authRealm":"${auth_realm}",
+  "authUser":"${auth_user}",
+  "authPassword":"${auth_password}"
 }
