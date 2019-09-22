@@ -39,7 +39,7 @@ function CredentialService() {
         }
 
         if(findOneByApplicationNameResult || typeof findOneByApplicationNameResult !== 'undefined'){
-          return callback("Application already registered for this value:"+parameters.application_name,null);
+          return callback("An application is already registered whit this name: "+parameters.application_name,null);
         }
 
         var credentials = _this.tokenHelper.generateSecrets();
