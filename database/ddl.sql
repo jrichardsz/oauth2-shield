@@ -1,3 +1,6 @@
+create database shield;
+use  shield;
+
 CREATE TABLE `credential` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `application_name` varchar(100) NOT NULL,
