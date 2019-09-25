@@ -67,6 +67,29 @@ function Routes() {
         }
       });
     });
+
+    _this.express.post('/oauth2/validate', function(req, res) {
+      if (!req.headers.authorization) {
+        return res.status(403).json({ error: 'No credentials sent!' });
+      }
+      let authorization = req.headers.authorization;
+      let token = authorization.replace('Bearer ', '');
+      _this.tokenService.introspect(token, function(err, decoded) {
+        if (err) {
+          console.log(err);
+          res.status(401);
+          res.json({
+            active: false
+          });
+        } else {
+          res.status(200);
+          res.json({
+            active: true
+          });
+        }
+      });
+    });
+
   }
 
 }
