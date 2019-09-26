@@ -1,6 +1,5 @@
 //@Dependency("Routes")
 function Routes() {
-
   var _this = this;
 
   //@Autowire
@@ -16,37 +15,42 @@ function Routes() {
   var basicAuthenticationMiddleware;
 
   this.main = function() {
-
     _this.express.get('/', function(req, res) {
       res.type('text/plain');
       res.send('Home');
     });
 
-    _this.express.post('/oauth2/credentials',
+    _this.express.post(
+      '/oauth2/credentials',
       _this.basicAuthenticationMiddleware.preAuthorize(),
       function(req, res) {
-        _this.credentialService.generateSecretsAsync(req.body, function(err, credentials) {
+        _this.credentialService.generateSecretsAsync(req.body, function(
+          err,
+          credentials
+        ) {
           if (err) {
             console.log(err.message || err);
             res.status(400);
             res.json({
-              "message": err.message || err
+              message: err.message || err
             });
             return;
           }
           res.json(credentials);
         });
-
-      });
+      }
+    );
 
     _this.express.post('/oauth2/token', function(req, res) {
-
-      _this.tokenService.generateTokenFromCredentialsAsync(req.body, function(err, tokenData) {
+      _this.tokenService.generateTokenFromCredentialsAsync(req.body, function(
+        err,
+        tokenData
+      ) {
         if (err) {
           console.log(err.message || err);
           res.status(400);
           res.json({
-            "message": err.message || err
+            message: err.message || err
           });
           return;
         }
@@ -60,7 +64,7 @@ function Routes() {
         if (err) {
           console.log(err);
           res.json({
-            "active": false
+            active: false
           });
         } else {
           res.json(decoded);
@@ -69,6 +73,7 @@ function Routes() {
     });
 
     _this.express.post('/oauth2/validate', function(req, res) {
+      console.log(req);
       if (!req.headers.authorization) {
         return res.status(403).json({ error: 'No credentials sent!' });
       }
@@ -89,9 +94,7 @@ function Routes() {
         }
       });
     });
-
-  }
-
+  };
 }
 
 module.exports = Routes;
