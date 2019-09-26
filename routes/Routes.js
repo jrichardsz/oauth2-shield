@@ -72,7 +72,7 @@ function Routes() {
       });
     });
 
-    _this.express.post('/oauth2/validate', function(req, res) {
+    _this.express.all('/oauth2/auth', function(req, res) {
       console.log(req);
       if (!req.headers.authorization) {
         return res.status(403).json({ error: 'No credentials sent!' });
