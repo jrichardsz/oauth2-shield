@@ -11,10 +11,10 @@ function TokenHelper() {
 
   }
 
-  this.generateSecrets = function() {
+  this.registerClient = function() {
     return {
-      "clientId": randtoken.generate(32) + ".app.com",
-      "clientSecret": randtoken.generate(32)
+      "client_id": randtoken.generate(32) + ".app.com",
+      "client_secret": randtoken.generate(32)
     };
   }
 

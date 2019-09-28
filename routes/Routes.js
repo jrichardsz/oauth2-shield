@@ -7,7 +7,7 @@ function Routes() {
   var express;
 
   //@Autowire
-  var credentialService;
+  var clientService;
 
   //@Autowire
   var tokenService;
@@ -23,9 +23,8 @@ function Routes() {
     });
 
     _this.express.post('/oauth2/credentials',
-      _this.basicAuthenticationMiddleware.preAuthorize(),
       function(req, res) {
-        _this.credentialService.generateSecretsAsync(req.body, function(err, credentials) {
+        _this.clientService.registerClient(req.body, function(err, credentials) {
           if (err) {
             console.log(err.message || err);
             res.status(400);

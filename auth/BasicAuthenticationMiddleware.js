@@ -27,6 +27,7 @@ function BasicAuthenticationMiddleware() {
     var basic = auth.basic({
         realm: settings.authRealm
     }, function(username, password, callback) {
+      console.log(">>>>>>>>>");
         callback(username == settings.authUser && password == settings.authPassword);
     });
 

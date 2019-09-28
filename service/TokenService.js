@@ -13,7 +13,7 @@ function TokenService() {
   var objectUtils;
 
   //@Autowire
-  var credentialsRepository;
+  var clientRepository;
 
   this.main = function() {
 
@@ -53,7 +53,7 @@ function TokenService() {
     }
 
     //validate client id existence
-    _this.credentialsRepository.findOneByClientId(parameters.client_id, function(findOneByClientIdErr, findOneByClientIdResults) {
+    _this.clientRepository.findOneByClientId(parameters.client_id, function(findOneByClientIdErr, findOneByClientIdResults) {
       if (findOneByClientIdErr) {
         console.log(findOneByClientIdErr);
         return callback({
