@@ -1,8 +1,8 @@
 var isString = require('lodash.isstring');
 const bcrypt = require('bcrypt');
 
-//@Dependency("CredentialService")
-function CredentialService() {
+//@Dependency("ClientService")
+function ClientService() {
 
   var _this = this;
 
@@ -10,7 +10,7 @@ function CredentialService() {
   var tokenHelper;
 
   //@Autowire
-  var credentialsRepository;
+  var clientRepository;
 
   //@Autowire
   var objectUtils;
@@ -19,7 +19,7 @@ function CredentialService() {
 
   this.main = function() {}
 
-  this.generateSecretsAsync = function(parameters, callback) {
+  this.regiterClient = function(parameters, callback) {
 
     var schema = {
       application_name: { isValid: isString, message: '[application_name] must be a valid string' },
@@ -32,7 +32,7 @@ function CredentialService() {
       return callback(err,null);
     }
 
-    _this.credentialsRepository.findOneByApplicationName(parameters.application_name,
+    _this.clientRepository.findOneByApplicationName(parameters.application_name,
       function(findOneByApplicationNameErr, findOneByApplicationNameResult){
         if(findOneByApplicationNameErr){
           return callback(findOneByApplicationNameErr,null);
@@ -57,7 +57,7 @@ function CredentialService() {
           entity.client_id = credentials.client_id;
           entity.client_secret = hash;
 
-          _this.credentialsRepository.save(entity, function(errInsert, result){
+          _this.clientRepository.save(entity, function(errInsert, result){
             if(errInsert){
               console.log(errInsert);
               return callback("An error occurred when the credential was being saved",null);
@@ -72,4 +72,4 @@ function CredentialService() {
 
 }
 
-module.exports = CredentialService;
+module.exports = ClientService;

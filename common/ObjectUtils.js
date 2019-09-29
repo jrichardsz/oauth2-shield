@@ -9,7 +9,7 @@ function ObjectUtils() {
 
   this.validate = function(schema, parameters, allowUnknown) {
     if (!isPlainObject(parameters)) {
-      throw new Error('Expected parameters to be a plain object.');
+      throw new Error('parameters must be a plain object.');
     }
     Object.keys(parameters)
       .forEach(function(key) {

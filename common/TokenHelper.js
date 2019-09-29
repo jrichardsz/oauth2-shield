@@ -13,8 +13,8 @@ function TokenHelper() {
 
   this.generateSecrets = function() {
     return {
-      "client_id": randtoken.generate(32) + ".app.com",
-      "client_secret": randtoken.generate(32)
+      "client_id": randtoken.generate(32).toLowerCase() + ".app.com",
+      "client_secret": randtoken.generate(32).toLowerCase()
     };
   }
 
@@ -30,6 +30,7 @@ function TokenHelper() {
   }
 
   /*https://www.epochconverter.com/*/
+  /*https://tools.ietf.org/html/rfc7662*/
   this.introspectToken = function(token, secret, callback) {
 
     // verifies secret and checks exp
@@ -51,14 +52,6 @@ function TokenHelper() {
       return callback(null, decoded)
     });
 
-  }
-
-  function getRandom(blocks) {
-    var random = "";
-    for (var a = 0; a < blocks; a++) {
-      random += Math.random().toString(36).slice(2);
-    }
-    return random;
   }
 
 }

@@ -1,5 +1,5 @@
-//@Dependency("CredentialsRepository")
-function CredentialsRepository() {
+//@Dependency("ClientRepository")
+function ClientRepository() {
 
   var _this = this;
 
@@ -10,7 +10,7 @@ function CredentialsRepository() {
 
   this.findOneByApplicationName = function(application_name, callback) {
     _this.databaseConnection.getConnection(function(err, connection) {
-      var sql = 'select * from credential where application_name = ?';
+      var sql = 'select * from client where application_name = ?';
       var parameters = [application_name];
       console.log(sql);
       console.log(parameters);
@@ -32,7 +32,7 @@ function CredentialsRepository() {
 
   this.findOneByClientId = function(client_id, callback) {
     _this.databaseConnection.getConnection(function(err, connection) {
-      var sql = 'select * from credential where client_id = ?';
+      var sql = 'select * from client where client_id = ?';
       var parameters = [client_id];
       console.log(sql);
       console.log(parameters);
@@ -70,7 +70,7 @@ function CredentialsRepository() {
         params.push(entity.id);
 
         // update statment
-        var sql = `UPDATE application
+        var sql = `UPDATE client
                    SET @columns
                    WHERE id = ?`;
 
@@ -94,7 +94,7 @@ function CredentialsRepository() {
           }
         }
 
-        var sql = `INSERT INTO credential
+        var sql = `INSERT INTO client
                    (@columns)
                    VALUES(@jokers)`;
         sql = sql.replace("@columns", columns.toString());
@@ -122,4 +122,4 @@ function CredentialsRepository() {
 }
 
 
-module.exports = CredentialsRepository;
+module.exports = ClientRepository;
