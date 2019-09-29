@@ -1,4 +1,4 @@
-CREATE TABLE `credential` (
+CREATE TABLE `client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `application_name` varchar(100) NOT NULL,
   `description` varchar(100) DEFAULT NULL,
