@@ -14,7 +14,7 @@
 
 - Linux
 - Nodejs >= 8
-- Mysql >= 5.7
+- Mysql = 5.7. **Another version, show errors**
 
 # Required variables
 
@@ -33,7 +33,7 @@
 | auth_password      | password related to **auth_user**
 | TZ      | Linux timezone. **IMPORTANT FOR DATES AND EXPIRATION TIME**. Example: 'America/Lima'
 
-# Development
+# Development Running
 
 Just
 ```
@@ -48,7 +48,7 @@ npm run dev
 ```
 
 
-# Production
+# Production Running
 
 Just
 ```
