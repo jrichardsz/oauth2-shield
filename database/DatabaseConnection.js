@@ -32,7 +32,10 @@ function DatabaseConnection() {
       case 'pool':
         // Creating pool instance
         _this.pool = mysql.createPool(dbConfig);
-        console.log("mysql connections pool status: " + ((_this.pool) ? "success" : "failure"));
+        if(!_this.pool){
+          console.error('Database connection is null or wrong');
+        }
+        console.log('Database connection was established using connection pooling');
         break;
       default:
         throw new Error('Not supported connection strategy!');
@@ -45,13 +48,24 @@ function DatabaseConnection() {
         // getConnection will return singleton connection
         callback(null, _this.connection);
         break;
-      //@TODO : in the tird invocation, app frezze
       case 'pool':
         // getConnection handled by mysql pool
         _this.pool.getConnection(function(err, connection) {
           if (err) callback(err);
-          callback(null, connection);
+          _this.connection = connection;
+          callback(null, _this.connection);
         });
+        break;
+    }
+  }
+
+  this.release = function() {
+    switch (_this.strategy) {
+      case 'single':
+        //do nothing
+        break;
+      case 'pool':
+        _this.connection.release();
         break;
     }
   }
@@ -60,18 +74,31 @@ function DatabaseConnection() {
    * Handling connection disconnects, as defined here: https://github.com/felixge/node-mysql
    */
   function handleDisconnect() {
+
+    // Recreate the connection, since the old one cannot be reused
     _this.connection = mysql.createConnection(_this.dbConfig);
 
     _this.connection.connect(function(err) {
+      // The server is either down or restarting (takes a while sometimes).
       if (err) {
-        console.log('error when connecting to db:', err);
+        console.error('error when connecting to db:', err);
+        // We introduce a delay before attempting to reconnect,
+        // to avoid a hot loop, and to allow our node script to
+        // process asynchronous requests in the meantime.
+        // If you're also serving http, display a 503 error.
         setTimeout(handleDisconnect, 2000);
+      }else{
+        console.log('Database connection was established managing connections one-by-one');
       }
     });
 
     _this.connection.on('error', function(err) {
       console.log('db error', err);
-      if (err.code === 'PROTOCOL_this.CONNECTION_this.LOST') {
+      // Connection to the MySQL server is usually
+      // lost due to either server restart, or a
+      // connnection idle timeout (the wait_timeout
+      // server variable configures this)
+      if (err.code === 'PROTOCOL_CONNECTION_LOST') {
         handleDisconnect();
       } else {
         throw err;

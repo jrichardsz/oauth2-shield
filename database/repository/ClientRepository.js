@@ -16,6 +16,7 @@ function ClientRepository() {
       console.log(parameters);
       connection.query(sql, parameters,
         function(findOneByApplicationNameErr, findOneByApplicationNameResult) {
+          _this.databaseConnection.release();
           if (findOneByApplicationNameErr) {
             callback(findOneByApplicationNameErr, null);
           }
@@ -38,6 +39,9 @@ function ClientRepository() {
       console.log(parameters);
       connection.query(sql, parameters,
         function(findOneByClientIdErr, findOneByClientIdResult) {
+
+          _this.databaseConnection.release();
+
           if (findOneByClientIdErr) {
             callback(findOneByClientIdErr, null);
           }
@@ -78,6 +82,7 @@ function ClientRepository() {
         console.log(sql);
 
         connection.query(sql, params, function(errUpdate, result) {
+          _this.databaseConnection.release();
           callback(errUpdate, result);
         });
 
@@ -101,21 +106,10 @@ function ClientRepository() {
         sql = sql.replace("@jokers", jokers.toString());
 
         connection.query(sql, values, function(errInsert, result) {
+          _this.databaseConnection.release();
           callback(errInsert, result);
         });
       }
-    });
-  }
-
-  this.logicDelete = function(id, callback) {
-    databaseConnection.getConnection(function(err, connection) {
-      // just turn delete column to 'Y'
-      var sql = `UPDATE application
-                 SET deleted = 'Y'
-                 WHERE id = ?`;
-      connection.query(sql, [id], function(errDelete, result) {
-        callback(errDelete, result);
-      });
     });
   }
 

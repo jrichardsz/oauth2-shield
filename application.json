@@ -1,11 +1,13 @@
 {
   "tokenSecret":"${token_secret}",
   "tokenLife":"${token_life}",
-  "host":"${database_host}",
-  "user":"${database_user}",
-  "password":"${database_password}",
-  "port":"${database_port}",
-  "name":"${database_name}",
+  "databaseHost":"${database_host}",
+  "databasePort":"${database_port}",
+  "databaseName":"${database_name}",
+  "databaseUser":"${database_user}",
+  "databasePassword":"${database_password}",
+  "databaseConnectionManagemet":"${database_connection_management}",
+  "databaseConnectionPoolLimit":"${database_connection_pool_limit}",
   "authRealm":"${auth_realm}",
   "authUser":"${auth_user}",
   "authPassword":"${auth_password}"
