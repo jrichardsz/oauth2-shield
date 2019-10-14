@@ -73,7 +73,7 @@ function Routes() {
     output: Same as spec with few modifications: error has not 200 status, instead has
     specific error codes like 400, 401, etc
     */
-    _this.express.post('/oauth2/nonspec/introspect/v1', function(req, res) {
+    _this.express.all('/oauth2/nonspec/introspect/v1', function(req, res) {
       _this.nonSpecIntrospectService.introspectV1(req,res);
     });
   }
