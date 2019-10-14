@@ -1,14 +1,20 @@
 # Oauth2 Shield
 
-<img src="./logo.png" width="30%">
+A minimal, fast and ready to use oauth2 implementation.
+
+<img src="https://raw.githubusercontent.com/jrichardsz/oauth2-shield/master/logo.png" width="30%">
 
 # Endpoints
 
 | Endpoint        | description  |
-| ------------- |:-----|
-| /oauth2/credentials      | client id & client secret generator
-| /oauth2/token      | access_token generation
-| /oauth2/introspect      | return meta information surrounding the token
+|:------------- |:-----|
+| /oauth2/credentials      | [client id & client secret generator](https://github.com/jrichardsz/oauth2-shield/wiki/Endpoint-:-Credentials-Generation)
+| /oauth2/token      | [access_token generation](https://github.com/jrichardsz/oauth2-shield/wiki/Endpoint-:-Token-Generation)
+| /oauth2/introspect      | [return meta information surrounding the token](https://github.com/jrichardsz/oauth2-shield/wiki/Endpoint-:-Token-Introspect)
+
+# Oauth2 Flow
+
+Check this [guideline](https://github.com/jrichardsz/oauth2-shield/wiki/Oauth2-Flow)
 
 # Prerequisites
 
@@ -21,8 +27,8 @@
 # Required variables
 
 
-| Variable        | description  |
-| ------------- |:-----|
+| Variable        | Description  |
+|:------------- |:-----|
 | token_secret      | alphanumeric string required to jwt token generation
 | token_life      | string representation of token expiration time. Example: 10s, 50m, 1h,etc
 | database_host      | mysql database host. Ip or domain
@@ -37,6 +43,7 @@
 | auth_password      | password related to **auth_user**
 | TZ      | Linux timezone. **IMPORTANT FOR DATES AND EXPIRATION TIME**. Example: 'America/Lima'
 
+More details about required variables [here](https://github.com/jrichardsz/oauth2-shield/wiki/Required-Variables)
 
 # Run for Developers
 
@@ -45,9 +52,9 @@ Just
 npm install
 ```
 
-Export required [variables](https://github.com/jrichardsz/oauth2-shield/wiki/Required-Variables)
+Export required [variables](https://github.com/jrichardsz/oauth2-shield/wiki/Required-Variables#quickly-configuration), startup your mysql
 
-And
+And execute
 ```
 npm run dev
 ```
@@ -60,21 +67,24 @@ Just
 npm install
 ```
 
-Export required [variables](https://github.com/jrichardsz/oauth2-shield/wiki/Required-Variables)
+Export required [variables](https://github.com/jrichardsz/oauth2-shield/wiki/Required-Variables#quickly-configuration), startup your mysql
 
-And
+And execute
 ```
 npm run start
 ```
+
+# Run with Docker
+
+Check this [guideline](https://github.com/jrichardsz/oauth2-shield/wiki/Launch-with-Docker)
 
 # Unit Testing
 
 Check this [guideline](https://github.com/jrichardsz/oauth2-shield/wiki/Unit-Testing)
 
+# Wiki
 
-# Run with Docker
-
-Check this [guideline](https://github.com/jrichardsz/oauth2-shield/wiki/Launch-with-Docker)
+Check [this](https://github.com/jrichardsz/oauth2-shield/wiki)
 
 # TO-DO
 
