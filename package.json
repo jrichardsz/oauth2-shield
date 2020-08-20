@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "dependency-injection-4nodejs": "jrichardsz/dependency-injection-4nodejs#master",
     "express": "4.17.1",
     "http-auth": "^3.2.3",
