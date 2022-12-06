@@ -13,7 +13,7 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "dependency-injection-4nodejs": "jrichardsz/dependency-injection-4nodejs#master",
-    "express": "4.17.1",
+    "express": "4.18.2",
     "http-auth": "^3.2.3",
     "jsonwebtoken": "8.5.1",
     "lodash.isplainobject": "4.0.6",
